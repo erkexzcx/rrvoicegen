@@ -39,19 +39,24 @@ jobs:
           version="${{ github.event.release.tag_name }}"
           fullarch="${GOARCH}$(echo ${{ matrix.platform }} | awk -F/ '{print $3}')"
           filename="${reponame}_${version}_${GOOS}_${fullarch}"
+          noextfilename="$filename"
+          if [[ "${{ matrix.platform }}" == "windows" ]]; then
+            noextfilename="$noextfilename.exe"
+          fi
           
           go build -ldflags "-w -s -X main.version=$version -extldflags '-static'" -o "$filename" cmd/$reponame/main.go
 
           echo "FILENAME=$filename" >> $GITHUB_ENV
+          echo "NOEXTFILENAME=$noextfilename" >> $GITHUB_ENV
 
       - name: Compress binary
         run: |
-          tar -czvf "${{ env.FILENAME }}.tar.gz" "${{ env.FILENAME }}"
+          tar -czvf "${{ env.NOEXTFILENAME }}.tar.gz" "${{ env.FILENAME }}"
 
       - name: Upload binary
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ env.FILENAME }}.tar.gz
+          file: ${{ env.NOEXTFILENAME }}.tar.gz
           tag: ${{ github.event.release.tag_name }}
           overwrite: false
