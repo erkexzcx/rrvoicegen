@@ -17,6 +17,8 @@ import (
 )
 
 var (
+	version string
+
 	flagCSV  = flag.String("csv", "custom.csv", "Path to CSV file.")
 	flagDest = flag.String("dest", "custom", "Dir of where generated files would be stored.")
 
