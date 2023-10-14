@@ -17,6 +17,7 @@ import (
 )
 
 var (
+	//lint:ignore U1000 Ignore will be set by build command
 	version string
 
 	flagCSV  = flag.String("csv", "custom.csv", "Path to CSV file.")
