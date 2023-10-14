@@ -21,7 +21,7 @@ Also visit https://eu-central-1.console.aws.amazon.com/polly/home/ (Amazon Polly
 
 ## 2. Generate text-lines
 
-**NOTE**: Below are generic instructions, but what worked for me the best - using OpenAI API directly via https://bettergpt.chat/ with GPT4 model and `Top-p: 0`.
+**NOTE**: Below are generic instructions, but what worked for me the best - using OpenAI API directly via https://bettergpt.chat/ with `GPT-4` model (everything else is default).
 
 Create a new file `custom.csv` and open with notepad. You will store modified voice-lines there.
 
@@ -49,7 +49,7 @@ zone.wav,"<speak>I'm starting zoned clean up. <prosody pitch='high'>5...4...3...
 zone_complete.wav,"<speak>Finished the zoned cleaning. I'm headed back to my comfort zone, the dock.</speak>"
 ```
 
-Once you have `custom.csv` file, double check if lines count is identical with `original.csv` file.
+Once you have `custom.csv` file, double check if lines count is identical with `original.csv` file. At least GPT-4 never failed with such task.
 
 ## 3. Generate voice lines
 
