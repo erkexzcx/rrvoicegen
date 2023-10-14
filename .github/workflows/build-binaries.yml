@@ -41,7 +41,7 @@ jobs:
           filename="${reponame}_${version}_${GOOS}_${fullarch}"
           noextfilename="$filename"
           if [[ "$GOOS" == "windows" ]]; then
-            noextfilename="$noextfilename.exe"
+            filename="$filename.exe"
           fi
           
           go build -ldflags "-w -s -X main.version=$version -extldflags '-static'" -o "$filename" cmd/$reponame/main.go
