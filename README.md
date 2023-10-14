@@ -1,6 +1,6 @@
 # rrvoicegen
 
-RoboRock voice generator, using OpenAI ChatGPT for text-lines generation and AWS Polly service for TTS (Text To Speech).
+RoboRock vacuum voice generator, using OpenAI ChatGPT for text-lines generation and AWS Polly service for TTS (Text To Speech).
 
 Project is inspired (and somewhat based on) https://github.com/arner/roborock-glados ideas and instructions.
 
