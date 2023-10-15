@@ -21,7 +21,7 @@ Also visit https://eu-central-1.console.aws.amazon.com/polly/home/ (Amazon Polly
 
 ## 2. Generate text-lines
 
-**NOTE**: Below are generic instructions, but what worked for me the best - using OpenAI API directly via https://bettergpt.chat/ with `GPT-4` model (everything else is default).
+**NOTE**: Below are generic instructions, but what worked for me the best - using OpenAI API directly via https://bettergpt.chat/ with `GPT-4` model and temperature of `0.8` (everything else is default).
 
 Create a new file `custom.csv` and open with notepad. You will store modified voice-lines there.
 

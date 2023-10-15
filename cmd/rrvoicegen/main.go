@@ -66,16 +66,27 @@ func main() {
 		return
 	}
 
+	fmt.Println("Generating and downloading sounds from AWS Polly. Please wait...")
+
 	// Process each line
 	wg := &sync.WaitGroup{}
+	sem := make(chan struct{}, 20) // Limit to 20 workers
+
 	for _, line := range lines {
 		wg.Add(1)
+		sem <- struct{}{} // Acquire a token
 		go func(line string) {
 			defer wg.Done()
 			processLine(line, svc, *flagDest)
+			<-sem // Release the token
 		}(line)
 	}
 	wg.Wait()
+
+	// Wait for all workers to finish
+	for i := 0; i < cap(sem); i++ {
+		sem <- struct{}{}
+	}
 
 	fmt.Println("Application completed the task. Bye!")
 }
@@ -84,6 +95,7 @@ func processLine(line string, svc *polly.Polly, dest string) {
 	record, err := csv.NewReader(strings.NewReader(line)).Read()
 	if err != nil {
 		fmt.Printf("Failed to parse CSV line: %v\n", err)
+		fmt.Println("Failed line:", line)
 		os.Exit(1)
 		return
 	}
