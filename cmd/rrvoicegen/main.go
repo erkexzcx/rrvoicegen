@@ -17,7 +17,6 @@ import (
 )
 
 var (
-	//lint:ignore U1000 Ignore will be set by build command
 	version string
 
 	flagCSV  = flag.String("csv", "custom.csv", "Path to CSV file.")
@@ -26,10 +25,17 @@ var (
 	flagPollyEngine = flag.String("polly_engine", "standard", "Polly engine (see https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)")
 	flagPollyLang   = flag.String("polly_lang", "en-US", "Polly language (see https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)")
 	flagPollyVoice  = flag.String("polly_voice", "Matthew", "Polly voice (see https://docs.aws.amazon.com/polly/latest/dg/voicelist.html)")
+
+	flagVersion = flag.Bool("version", false, "prints version of the application")
 )
 
 func main() {
 	flag.Parse()
+
+	if *flagVersion {
+		fmt.Println("Version:", version)
+		return
+	}
 
 	// Read the entire CSV file into memory
 	data, err := os.ReadFile(*flagCSV)

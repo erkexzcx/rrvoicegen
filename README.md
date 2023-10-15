@@ -4,6 +4,8 @@ RoboRock vacuum robot voice generator, using OpenAI ChatGPT for text-lines gener
 
 Project is inspired (and somewhat based on) https://github.com/arner/roborock-glados ideas and instructions.
 
+I highly recommend using this project in combination with my other project, which allows RoboRock vacuum to speak different voice-lines for each command: https://github.com/erkexzcx/rrmultivoice
+
 # Get started
 
 ## 0. Understand cappabilities
