@@ -57,7 +57,7 @@ Once you have `custom.csv` file, double check if lines count is identical with `
 
 Now, using AWS, generate actual voice lines in a form of audio files. This is where this application comes to help.
 
-Download binary from here: 
+Download binary from here: https://github.com/erkexzcx/rrvoicegen/releases/latest
 
 Then the usage is like this:
 ```bash
